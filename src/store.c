@@ -256,7 +256,7 @@ schedstat_next:
                                 break;
                 }
 
-                 /* end of our LL? then append a new record */
+                /* end of our LL? then append a new record */
                 if (ps->pid != pid) {
                         _cleanup_fclose_ FILE *st = NULL;
                         char t[32];
@@ -360,8 +360,6 @@ no_sched:
                         stat(filename, &file_info);
                         ps->uid = file_info.st_uid;
 
-                        printf("DAVE %s, %d\n", filename, ps->uid);
-
                         /*
                          * setup child pointers
                          *
@@ -370,8 +368,6 @@ no_sched:
                          */
                         if (pid == 1)
                                 continue; /* nothing to do for init atm */
-
-
 
                         /* kthreadd has ppid=0, which breaks our tree ordering */
                         if (ps->ppid == 0)
